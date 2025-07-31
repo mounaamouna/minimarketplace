@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Input from '../Input/Input';
 import './SignupForm.css';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -9,8 +10,8 @@ const SignupForm = () => {
     password: '',
   });
 
-  const [message, setMessage] = useState(''); 
-
+  const [message, setMessage] = useState('');
+  const [redirect, setRedirect] = useState(false); 
   const handleChange = (e) => {
     setFormData({ 
       ...formData, 
@@ -27,17 +28,23 @@ const SignupForm = () => {
         password: formData.password,
       });
 
-      setMessage("Inscription réussie !");
-      console.log("User inscrit :", response.data);
+      setMessage("Inscription réussie ");
+      console.log("Uitilisateur inscrit :", response.data);
 
       localStorage.setItem("token", response.data.data.token);
 
-    
+      setRedirect(true); 
+
     } catch (error) {
       setMessage("Erreur lors de l'inscription");
       console.error(error);
     }
   };
+
+  
+  if (redirect) {
+    return <Navigate to="/Acceuil" />;
+  }
 
   return (
     <div className="signup-container">

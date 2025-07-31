@@ -20,7 +20,7 @@ const LoginForm = () => {
       const { token } = response.data;
       localStorage.setItem('token', token);
 
-      navigate('/'); // test pour
+      navigate('/Acceuil'); // test pour
     } catch (error) {
       console.error('Erreur de connexion :', error);
       alert("Email ou mot de passe incorrect");
