@@ -15,6 +15,7 @@ const Navbar = () => {
         <li><Link to="/acceuil">Accueil</Link></li>
 
         <li><Link to="/ajouter-produit">Ajouter un produit</Link></li>
+        <li><Link to="/mes-produits">Mes Produits</Link></li>
       </ul>
       <button onClick={handleLogout}>Déconnexion</button>
     </nav>
